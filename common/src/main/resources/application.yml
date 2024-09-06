@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: common
+  profiles:
+    active: tidb #默认数据库
+
+logging:
+  config: classpath:logback-spring.xml

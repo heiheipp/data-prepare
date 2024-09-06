@@ -1,0 +1,40 @@
+DROP TABLE IF EXISTS `TEST_HTAP2_SORDATA_001`;
+CREATE TABLE `TEST_HTAP2_SORDATA_001`
+(
+    ZDY_ZJ     varchar(50)    DEFAULT NULL COMMENT '自定义_主键',
+    DTE        varchar(8)     DEFAULT NULL COMMENT '数据日期',
+    JRXKZH     varchar(30)    DEFAULT NULL COMMENT '金融许可证号',
+    NBJGH      varchar(30)    DEFAULT NULL COMMENT '内部机构号',
+    YHJGMC     varchar(450)   DEFAULT NULL COMMENT '银行机构名称',
+    KHTYBH     varchar(60)    DEFAULT NULL COMMENT '客户统一编号',
+    KHXM       varchar(150)   DEFAULT NULL COMMENT '客户姓名',
+    ZJLB       varchar(60)    DEFAULT NULL COMMENT '证件类别',
+    ZJHM       varchar(70)    DEFAULT NULL COMMENT '证件号码',
+    KHLX       varchar(60)    DEFAULT NULL COMMENT '客户类型',
+    GJ         varchar(60)    DEFAULT NULL COMMENT '国籍',
+    MZ         varchar(30)    DEFAULT NULL COMMENT '民族',
+    XB         varchar(3)     DEFAULT NULL COMMENT '性别',
+    XL         varchar(30)    DEFAULT NULL COMMENT '学历',
+    CSNY       varchar(6)     DEFAULT NULL COMMENT '出生年月',
+    SFYH       varchar(3)     DEFAULT NULL COMMENT '是否已婚',
+    GZDWMC     varchar(450)   DEFAULT NULL COMMENT '工作单位名称',
+    GZDWDZ     varchar(600)   DEFAULT NULL COMMENT '工作单位地址',
+    GZDWDH     varchar(30)    DEFAULT NULL COMMENT '工作单位电话',
+    DWXZ       varchar(60)    DEFAULT NULL COMMENT '单位性质',
+    ZY         varchar(90)    DEFAULT NULL COMMENT '职业',
+    ZW         varchar(150)   DEFAULT NULL COMMENT '职务',
+    GRNSR      decimal(20, 2) DEFAULT NULL COMMENT '个人年收入',
+    TXDZ       varchar(600)   DEFAULT NULL COMMENT '通讯地址',
+    LXDH       varchar(70)    DEFAULT NULL COMMENT '联系电话',
+    XDKHBZ     varchar(3)     DEFAULT NULL COMMENT '信贷客户标志',
+    SCJLXDGXNY varchar(6)     DEFAULT NULL COMMENT '首次建立信贷关系年月',
+    SFNH       varchar(3)     DEFAULT NULL COMMENT '是否农户',
+    BHYGBZ     varchar(3)     DEFAULT NULL COMMENT '本行员工标志',
+    SHMDBZ     varchar(3)     DEFAULT NULL COMMENT '上黑名单标志',
+    SHMDRQ     varchar(8)     DEFAULT NULL COMMENT '上黑名单日期',
+    BBZ        varchar(600)   DEFAULT NULL COMMENT '备注',
+    CJRQ       varchar(8)     DEFAULT NULL COMMENT '采集日期',
+    GSFZJG     varchar(200)   DEFAULT NULL COMMENT '归属分支机构'
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_bin COMMENT ='个人基础信息表_报送历史表';

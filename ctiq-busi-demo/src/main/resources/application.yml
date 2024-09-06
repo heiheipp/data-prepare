@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: data-prepare
+  profiles:
+    active: tidb #默认数据库
+
+server:
+  port: 8091
+
+

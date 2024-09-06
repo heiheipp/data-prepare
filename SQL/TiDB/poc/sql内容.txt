@@ -1,0 +1,157 @@
+SQL 1:
+SELECT A.COLUMN_9,
+       A.COLUMN_5,
+       A.COLUMN_27,
+       A.COLUMN_41,
+       A.COLUMN_64,
+       A.COLUMN_43,
+       A.COLUMN_45 * 1000 AS COLUMN_45,
+       A.COLUMN_46 * 1000 AS COLUMN_46,
+       A.COLUMN_95,
+       A.COLUMN_77,
+       A.COLUMN_82,
+       A.COLUMN_100,
+       A.COLUMN_81,
+       A.COLUMN_99,
+       A.COLUMN_133,
+       A.COLUMN_76,
+       A.COLUMN_94,
+       A.COLUMN_132,
+       A.COLUMN_26,
+       A.COLUMN_14,
+       A.COLUMN_62,
+       FORMAT(A.COLUMN_42, 2) as COLUMN_42,
+       A.COLUMN_44,
+       A.COLUMN_37,
+       A.COLUMN_151,
+       A.COLUMN_28,
+       A.COLUMN_30,
+       A.COLUMN_29,
+       A.COLUMN_96,
+       A.COLUMN_7,
+       A.COLUMN_13,
+       CASE
+         WHEN A.COLUMN_6 = 0 THEN A.COLUMN_13
+              ELSE '0'
+              END AS COLUMN_13
+       FROM TEST_TABLE_1 A
+       WHERE
+             A.COLUMN_5 >= '起始日期'
+         AND A.COLUMN_5 <= '截至日期'
+         AND A.COLUMN_9 = '主账户账号'
+         AND A.COLUMN_22 = '卡号'
+         AND A.COLUMN_144 = '客户号'
+         AND A.COLUMN_41 = '交易货币'
+         AND ((A.COLUMN_43 = 'C' AND A.COLUMN_44 = '0') OR (A.COLUMN_43 = 'D' AND A.COLUMN_44 = '1'))
+         AND A.COLUMN_45 <= CAST('上限金额' AS DECIMAL) / 1000
+         AND A.COLUMN_45 >= CAST('最低金额' AS DECIMAL) / 1000
+         AND ((A.COLUMN_43 = 'C' AND (A.COLUMN_76 LIKE CONCAT('交易对手账号', '%') OR
+                                      A.COLUMN_77 LIKE CONCAT('交易对手账号', '%'))) OR
+              (A.COLUMN_43 = 'D' AND (A.COLUMN_94 LIKE CONCAT('交易对手账号', '%') OR
+                                      A.COLUMN_95 LIKE CONCAT('交易对手账号', '%'))))
+         AND ((A.COLUMN_43 = 'C' AND A.COLUMN_75 LIKE CONCAT('交易对手名称', '%')) OR
+              (A.COLUMN_43 = 'D' AND A.COLUMN_93 LIKE CONCAT('交易对手名称', '%')));
+
+SQL 2:
+SELECT COUNT(1) / SUM(COLUMN_45)
+       FROM TEST_TABLE_1 A
+       WHERE
+             A.COLUMN_5 >= '起始日期'
+             AND A.COLUMN_5 <= '截至日期'
+             AND A.COLUMN_9 = '主账户账号'
+             AND A.COLUMN_22 = '卡号'
+             AND A.COLUMN_144 = '客户号'
+             AND A.COLUMN_41 = '交易货币'
+             AND ((A.COLUMN_43 = 'C' AND A.COLUMN_44 = '0') OR (A.COLUMN_43 = 'D' AND A.COLUMN_44 = '1'))
+             AND A.COLUMN_45 <= CAST('上限金额' AS DECIMAL) / 1000
+             AND A.COLUMN_45 >= CAST('最低金额' AS DECIMAL) / 1000
+             AND ((A.COLUMN_43 = 'C' AND (A.COLUMN_76 LIKE CONCAT('交易对手账号', '%') OR
+                                          A.COLUMN_77 LIKE CONCAT('交易对手账号', '%'))) OR
+                  (A.COLUMN_43 = 'D' AND (A.COLUMN_94 LIKE CONCAT('交易对手账号', '%') OR
+                                          A.COLUMN_95 LIKE CONCAT('交易对手账号', '%'))))
+             AND ((A.COLUMN_43 = 'C' AND A.COLUMN_75 LIKE CONCAT('交易对手名称', '%')) OR
+                  (A.COLUMN_43 = 'D' AND A.COLUMN_93 LIKE CONCAT('交易对手名称', '%')));
+
+SQL 3:
+SELECT B.V_FIRST_NAME,
+       B.V_LAST_NAME,
+       B.V_MOBILE,
+       B.D_BIRTHDAY,
+       A.COLUMN_9,
+       A.COLUMN_5,
+       A.COLUMN_27,
+       A.COLUMN_41,
+       A.COLUMN_64,
+       A.COLUMN_43,
+       A.COLUMN_45 * 1000 AS COLUMN_45,
+       A.COLUMN_46 * 1000 AS COLUMN_46,
+       A.COLUMN_95,
+       A.COLUMN_77,
+       A.COLUMN_82,
+       A.COLUMN_100,
+       A.COLUMN_81,
+       A.COLUMN_99,
+       A.COLUMN_133,
+       A.COLUMN_76,
+       A.COLUMN_94,
+       A.COLUMN_132,
+       A.COLUMN_26,
+       A.COLUMN_14,
+       A.COLUMN_62,
+       FORMAT(A.COLUMN_42, 2) as COLUMN_42,
+       A.COLUMN_44,
+       A.COLUMN_37,
+       A.COLUMN_151,
+       A.COLUMN_28,
+       A.COLUMN_30,
+       A.COLUMN_29,
+       A.COLUMN_96,
+       A.COLUMN_7,
+       A.COLUMN_13,
+       CASE
+         WHEN A.COLUMN_6 = 0 THEN A.COLUMN_13
+              ELSE '0'
+              END AS COLUMN_13
+       FROM TEST_TABLE_1 A, TEST_TABLE_3 B, TEST_TABLE_6 C
+       WHERE
+             A.COLUMN_5 >= '起始日期'
+         AND A.COLUMN_5 <= '截至日期'
+         AND A.COLUMN_9 = '主账户账号'
+         AND A.COLUMN_22 = '卡号'
+         AND A.COLUMN_144 = '客户号'
+         AND A.COLUMN_41 = '交易货币'
+         AND ((A.COLUMN_43 = 'C' AND A.COLUMN_44 = '0') OR (A.COLUMN_43 = 'D' AND A.COLUMN_44 = '1'))
+         AND A.COLUMN_45 <= CAST('上限金额' AS DECIMAL) / 1000
+         AND A.COLUMN_45 >= CAST('最低金额' AS DECIMAL) / 1000
+         AND ((A.COLUMN_43 = 'C' AND (A.COLUMN_76 LIKE CONCAT('交易对手账号', '%') OR
+                                      A.COLUMN_77 LIKE CONCAT('交易对手账号', '%'))) OR
+              (A.COLUMN_43 = 'D' AND (A.COLUMN_94 LIKE CONCAT('交易对手账号', '%') OR
+                                      A.COLUMN_95 LIKE CONCAT('交易对手账号', '%'))))
+         AND ((A.COLUMN_43 = 'C' AND A.COLUMN_75 LIKE CONCAT('交易对手名称', '%')) OR
+              (A.COLUMN_43 = 'D' AND A.COLUMN_93 LIKE CONCAT('交易对手名称', '%')))
+         AND A.COLUMN_144 = B.V_CUST_ID
+         AND C.V_INST_CODE = B.V_INST_CODE
+         AND A.COLUMN_22 = C.V_CARD_NUMBER
+         AND C.V_ACCOUNT_NUMBER = A.COLUMN_9;
+
+
+SQL 4:
+        select A.V_CUST_ID, C.V_CARD_ID, F.D_OPENING_DUE_DATE
+        FROM TEST_TABLE_3 A,
+             TEST_TABLE_5 B,
+             TEST_TABLE_4 C,
+             TEST_TABLE_6 D,
+             TEST_TABLE_7 E,
+             TEST_TABLE_8 F
+        where
+            A.V_SRC_CUST_REF_CODE = B.V_SRC_CUST_REF_CODE
+            and B.N_RELATION_SEQ_NO = 0
+            and B.V_RELATION_ID = C.V_CARD_MAILER_CONTACT_ID
+            and C.V_CARD_ISSUE_ID = 1
+            and C.V_CARD_ID = D.V_CARD_ID
+            and D.V_ACCOUNT_NUMBER = E.V_ACCOUNT_NUMBER
+            and E.V_CORPORATE_ACCT_FLAG <> '1'
+            and E.V_ACCOUNT_NUMBER = F.V_ACCOUNT_NUMBER
+            and E.N_CUR_CYCLE_NO = F.N_CYCLE_NO;
+
+            order by t1.custid, t2.cardid

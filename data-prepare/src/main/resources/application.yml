@@ -1,0 +1,146 @@
+spring:
+  application:
+    name: data-prepare
+  profiles:
+    active: tidb-druid #默认数据库
+
+server:
+  port: 8089
+
+logging:
+  config: classpath:logback-spring.xml
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+#运行方式，true-手工模式，false-默认模式
+debug:
+  enable: true
+  concurrency: 1
+
+#xxxx配置模型
+xxxx:
+  common:
+    targetType: 3 #目标类型，第一位：1-数据库，2-CSV文件（文件名默认为表名.csv），3-其它
+    fileLocation: D:\test #文件存放位置，default-执行目录
+    fileMerge: true #文件合并标志
+    isRegisterDBLog: false #是否记录数据库日志
+  model:
+    type: 1 #初始化的数据表类型，1-模拟交易基础信息表，2-真实模型的交易主表，3-真实模型的批量表，4-会计引擎模型，5-指导价模型，6-模型整合，7-监管模型，8-sql语法转换
+  config:
+    trandetail: #模拟版交易基础信息表
+      custNum: 100  #每日活跃客户数量
+      perCustCardNums: 2  #每个客户的卡号数量
+      custTransNumEveryday: 5  #每个客户每日交易笔数
+      days: 3  #交易日时间跨度
+      startDay: 2022-03-14 #yyyy-mm-dd
+      endDay: 2022-03-14
+      batchNum: 200  #单事务提交数量
+      custType: Personal
+      personalCustIdPrefix: 11
+      custIdLength: 12
+      cardBin: 622222
+      cardLength: 16
+    transmaintable: #真实模型的交易主表
+      custNum: 20000  #每日活跃客户数量
+      perCustCardNums: 2  #每个客户的卡号数量
+      custTransNumEveryday: 5  #每个客户每日交易笔数
+      days: 4  #交易日时间跨度
+      startDay: 2022-05-12 #yyyy-mm-dd
+      endDay: 2022-05-12
+      batchNum: 100  #单事务提交数量
+      custType: Personal
+      personalCustIdPrefix: 11
+      custIdLength: 16
+      cardBin: 622222
+      cardLength: 19
+      accountPrefix: 990001
+      accountLength: 18
+    batchmodel: #批量测试模型
+      custNum: 2000  #每日活跃客户数量
+      perCustCardNums: 1  #每个客户的卡号数量
+      perCardAccountNums: 1  #每个卡号对应的账户数
+      batchNum: 100  #单事务提交数量
+      beginOffset: 0 #起始序号
+      custType: Personal
+      personalCustIdPrefix: 11
+      custIdLength: 16
+      cardBin: 622222
+      cardLength: 19
+      accountPrefix: 990001
+      accountLength: 18
+    kuaiji: #会计引擎模型
+      custNum: 10  #每日活跃客户数量
+      perCustWithTranSeqNums: 2  #每个客户每日主交易笔数
+      perTranSeqWithFenluNums: 3 #每笔主交易对应的分录数
+      perFenluWithAccountNums: 1  #每笔分录对应的账号数量
+      days: 4  #交易日时间跨度
+      startDay: 2022-05-13 #yyyy-mm-dd
+      endDay: 2022-05-13
+      batchNum: 1  #单事务提交数量
+      custType: Personal
+      personalCustIdPrefix: 11
+      custIdLength: 16
+      accountPrefix: 10
+      accountLength: 16
+      tranSeqLength: 9 #交易主流水号长度
+    zdj: #指导价
+      custNum: 100  #每日活跃客户数量
+      perCustWithCardNums: 3  #每个客户的账号数量
+      perCardWithTransNums: 3  #每个账户每日交易笔数
+      days: 2  #交易日时间跨度
+      startDay: 2022-05-13 #yyyy-mm-dd
+      endDay: 2022-05-14
+      batchNum: 10  #单事务提交数量
+      custType: Personal
+      personalCustIdPrefix: 18
+      custIdLength: 16
+      accountPrefix: 99
+      accountLength: 16
+      tranSeqLength: 9 #交易流水号长度
+    mergemodel: #模型整合
+      tableMask: F100000000 #第一位：第一类表50c，第二位：第一类表100c，第三位：第一类表200c，第四位：第一类表300c，第五位：第一类表400c，第六位：第二类表，第七位：ads_txn_tif_bas，第八位：ads_txn_tif_bas_detail，第九位：ads_txn_tif_detail
+      custNum: 10000  #每日活跃客户数量
+      perCustCardNums: 2  #每个客户的卡号数量
+      custTransNumEveryday: 5  #每个客户每日交易笔数
+      days: 1  #交易日时间跨度
+      startDay: 2022-05-13 #yyyy-mm-dd
+      endDay: 2022-05-13
+      batchNum: 50  #单事务提交数量
+      custType: Personal
+      personalCustIdPrefix: 11
+      custWithProvinceFlag: true
+      custIdLength: 10
+      cardBin: 622222
+      cardLength: 19
+      accountPrefix: 990001
+      accountLength: 18
+      tranSeqLength: 9 #交易流水号长度
+    regulatory: #监管模型
+      tableType: 1 #表类型，1：代表TEST_HTAP2_INSERT_001表，2：代表TEST_HTAP2_SORDATA_001表，3：代表TEST_HTAP2_SORDATA_002表
+      custNum: 5000000  #每日活跃客户数量
+      perCustCardNums: 1  #每个客户的卡号数量
+      custTransNumEveryday: 1  #每个客户每日交易笔数
+      days: 1  #交易日时间跨度
+      startDay: 2022-05-13 #yyyy-mm-dd
+      endDay: 2022-05-13
+      batchNum: 100  #单事务提交数量
+      provinceCode: 11 #省市代码
+      serialNoOffset: 0 #序列号起始偏移量
+      custType: Personal
+      custIdPrefix: 16
+      custWithProvinceFlag: true
+      custIdLength: 16
+      cardBin: 622222
+      cardLength: 19
+      accountPrefix: 990001
+      accountLength: 18
+      tranSeqLength: 9 #交易流水号长度
+      branchNoLength: 6
+    sqlconvert: #sql语法转换
+      sourceType: mybatis #源端orm框架类型
+      sourceFileLocation: D:\test\extractSQL\source  #源端待转换文件路径
+      targetFileLocation: D:\test\extractSQL\target  #目标端转换后文件路径
+      targetFileSplitType: sql  #目标文件切割方式，包括：none-不切割，mapper-xml文件级，sql-sql级

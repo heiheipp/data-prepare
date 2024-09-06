@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:tidb://10.2.103.12:4000/boc?useSSL=false&useServerPrepStmts=true&cachePrepStmts=true&useConfigs=maxPerformance&prepStmtCacheSize=1000&prepStmtCacheSqlLimit=1000000&allowMultiQueries=false&rewriteBatchedStatements=true
+    username: root
+    password:
+    driver-class-name: com.tidb.jdbc.Driver
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 20
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      connection-test-query: select 1
+#      metric-registry:
+#      register-mbeans: true
+#      auto-commit: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    root: info

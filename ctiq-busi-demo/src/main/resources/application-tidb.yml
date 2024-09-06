@@ -1,0 +1,35 @@
+spring:
+  db1:
+    jdbc-url: jdbc:mysql://127.0.0.1:3306/ds_0?useSSL=false&useServerPrepStmts=true&cachePrepStmts=true&useConfigs=maxPerformance&prepStmtCacheSize=1000&prepStmtCacheSqlLimit=1000000&allowMultiQueries=false&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 20
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      connection-test-query: select 1
+  db2:
+    jdbc-url: jdbc:mysql://127.0.0.1:3306/ds_1?useSSL=false&useServerPrepStmts=true&cachePrepStmts=true&useConfigs=maxPerformance&prepStmtCacheSize=1000&prepStmtCacheSqlLimit=1000000&allowMultiQueries=false&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 20
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      connection-test-query: select 1
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    root: info
+    com.heiheipp.ctiqbusiapi.mapper: trace

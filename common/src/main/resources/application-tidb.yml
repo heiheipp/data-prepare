@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:mysql://172.16.11.126:4000/boc?characterEncoding=utf8&useSSL=false&useServerPrepStmts=true&prepStmtCacheSqlLimit=10000000000&useConfigs=maxPerformance&rewriteBatchedStatements=true&defaultfetchsize=-214783648
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 10
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      connection-test-query: select 1
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    root: info
